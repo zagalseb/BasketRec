@@ -1,0 +1,148 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.4; /* Reduce el interlineado general */
+}
+
+header {
+    background-color: #004992;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+header button:hover {
+    background-color: #c9302c;
+}
+
+#filtros-container {
+    position: relative;
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#toggle-filtros {
+    display: block;
+    margin: 0 auto 10px;
+    background-color: #004992;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#toggle-filtros:hover {
+    background-color: #003366;
+    transform: scale(1.05);
+}
+
+#filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    align-items: center;
+}
+
+.filtro-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtro-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filtro-item input, .filtro-item select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filtro-item input:focus, .filtro-item select:focus {
+    border-color: #004992;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 73, 146, 0.5);
+}
+
+#resultados {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+#resultados li {
+    background: white;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.2; /* Reduce el interlineado en los resultados */
+}
+
+#resultados li img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+}
+
+#resultados li div {
+    flex: 1;
+    margin-left: 20px;
+}
+
+footer {
+    background: #004992;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+

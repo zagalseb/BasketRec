@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reclutamiento de Básquetbol</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Contenedor de bienvenida -->
+  <header>
+    <div id="bienvenida-container">
+      <p id="bienvenida"></p>
+    </div>
+    <h1>Base de Datos de Jugadores</h1>
+    <button id="cerrar-sesion">Cerrar Sesión</button>
+  </header>
+
+  <!-- Contenedor de filtros -->
+  <div id="filtros-container">
+    <div id="filtros">
+      <div class="filtro-item">
+        <label for="posicionPrincipalFiltro">Posición Principal:</label>
+        <select id="posicionPrincipalFiltro" onchange="filtrarPorPosicionPrincipal()">
+          <option value="">Todas</option>
+          <option value="Base">Base</option>
+          <option value="Escolta">Escolta</option>
+          <option value="Alero">Alero</option>
+          <option value="Ala-Pívot">Ala-Pívot</option>
+          <option value="Pívot">Pívot</option>
+        </select>
+      </div>
+
+      <div class="filtro-item">
+        <label for="claseFiltro">Clase (Año de graduación):</label>
+        <select id="claseFiltro" onchange="filtrarPorClase()">
+          <option value="">Todas</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+        </select>
+      </div>
+
+      <div class="filtro-item">
+        <label for="estadoFiltro">Estado:</label>
+        <select id="estadoFiltro" onchange="filtrarPorEstado()">
+          <option value="">Todos</option>
+          <option value="Nuevo León">Nuevo León</option>
+          <option value="Jalisco">Jalisco</option>
+          <option value="Ciudad de México">Ciudad de México</option>
+          <!-- Agregar más estados según los datos -->
+        </select>
+      </div>
+
+      <div class="filtro-item">
+        <label for="alturaMinFiltro">Altura mínima (mts):</label>
+        <input type="number" id="alturaMinFiltro" placeholder="Ej: 1.80" oninput="filtrarPorAltura()">
+      </div>
+
+      <div class="filtro-item">
+        <label for="alturaMaxFiltro">Altura máxima (mts):</label>
+        <input type="number" id="alturaMaxFiltro" placeholder="Ej: 2.10" oninput="filtrarPorAltura()">
+      </div>
+
+      <div class="filtro-item">
+        <label for="ppjFiltro">Puntos por juego mínimos:</label>
+        <input type="number" id="ppjFiltro" placeholder="Ej: 15" oninput="filtrarPorPPJ()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  <main>
+    <section id="resultados-container">
+      <h2>Resultados</h2>
+      <ul id="resultados"></ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Reclutamiento de Básquetbol. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
