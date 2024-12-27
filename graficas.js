@@ -56,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
           data: datos.map(d => ({
             x: parseFloat(d[ejeX]) || 0,
             y: parseFloat(d[ejeY]) || 0,
-            name: `${d["Nombre"]} ${d["Apellido Paterno"]}`, // Guardar nombre completo
+            name: `${d["Nombre"]} ${d["Apellido Paterno"]}`, // Nombre completo
+            profileLink: `perfil.html?nombre=${encodeURIComponent(d["Nombre"])}&apellido=${encodeURIComponent(d["Apellido Paterno"])}`, // Enlace al perfil
           })),
           backgroundColor: "rgba(0, 123, 255, 0.7)",
           borderColor: "rgba(0, 73, 146, 1)",
@@ -81,17 +82,29 @@ document.addEventListener("DOMContentLoaded", () => {
   
                   return [
                     `Nombre: ${name}`,
-                    `${ejeX}: ${xValue}`,
-                    `${ejeY}: ${yValue}`,
-                  ].join("\n");
+                    `${context.chart.options.scales.x.title.text}: ${xValue}`,
+                    `${context.chart.options.scales.y.title.text}: ${yValue}`,
+                  ];
                 },
               },
             },
           },
+          onClick: (event, elements) => {
+            if (elements.length > 0) {
+              const datasetIndex = elements[0].datasetIndex;
+              const index = elements[0].index;
+              const pointData = grafica.data.datasets[datasetIndex].data[index];
+  
+              // Redirigir al perfil del jugador
+              if (pointData.profileLink) {
+                window.location.href = pointData.profileLink;
+              }
+            }
+          },
           scales: {
             x: {
               beginAtZero: false,
-              ...xScale, // Aplica el rango dinámico para el eje X
+              ...xScale,
               title: {
                 display: true,
                 text: ejeX,
@@ -99,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             y: {
               beginAtZero: false,
-              ...yScale, // Aplica el rango dinámico para el eje Y
+              ...yScale,
               title: {
                 display: true,
                 text: ejeY,
@@ -127,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+  
   
   
   
