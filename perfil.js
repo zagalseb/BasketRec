@@ -155,6 +155,7 @@ function cargarPerfilJugador() {
     document.getElementById("Fecha de Nacimiento").textContent = jugador["Fecha de Nacimiento"] || "N/A";
     document.getElementById("promedio").textContent = jugador["Promedio Acádemico"] || "N/A";
     document.getElementById("escuela").textContent = jugador["Nombre de tu escuela:"] || "N/A";
+    document.getElementById("estudio actual").textContent = jugador["Nivel de estudio actual"] || "N/A";
     document.getElementById("club").textContent = jugador["Club o equipo actual"] || "N/A";
     document.getElementById("estado").textContent = jugador["Estado"] || "N/A";
     document.getElementById("dash").textContent = jugador["PPJ"] || "N/A";
