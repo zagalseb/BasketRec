@@ -496,6 +496,66 @@ a:hover {
   cursor: not-allowed; /* Cursor deshabilitado */
 }
 
+/* Contenedor general del formulario */
+#formFiltros {
+  display: flex;
+  flex-wrap: wrap; /* Permite ajustar los elementos en varias filas */
+  gap: 20px; /* Espaciado entre los elementos */
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  align-items: center; /* Alinear verticalmente */
+  background-color: #f9f9f9; /* Fondo claro para contraste */
+  padding: 20px; /* Espaciado interno */
+  border: 1px solid #ddd; /* Borde suave */
+  border-radius: 8px; /* Bordes redondeados */
+  max-width: 600px; /* Ancho máximo */
+  margin: 0 auto; /* Centrar el formulario en la página */
+}
+
+/* Contenedor de cada filtro (etiqueta + selector) */
+#formFiltros div {
+  display: flex;
+  flex-direction: column; /* Etiqueta encima del selector */
+  align-items: flex-start;
+  width: 45%; /* Ancho proporcional para dos columnas */
+}
+
+/* Estilo de las etiquetas */
+#formFiltros label {
+  font-weight: bold;
+  color: #004992; /* Azul oscuro */
+  margin-bottom: 5px; /* Espaciado entre la etiqueta y el campo */
+}
+
+/* Estilo de los selectores */
+#formFiltros select {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Estilo del botón */
+#formFiltros button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en el botón */
+#formFiltros button:hover {
+  background-color: #0056b3; /* Azul más oscuro */
+}
+
 
 
 

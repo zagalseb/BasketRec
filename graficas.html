@@ -21,37 +21,37 @@
   </header>
 
   <main style="padding: 20px;">
-    <h1 style="text-align: center; color: #004992;">Gráficas Interactivas</h1>
+    <h1 style="text-align: center; color: #004992;">Gráficas de comparación</h1>
 
     <!-- Filtros -->
     <section style="margin-bottom: 20px;">
-  <form id="formFiltros">
-    <div>
-      <label for="ejeX">Eje X:</label>
-      <select id="ejeX" required>
-        <option value="Altura">Altura</option>
-        <option value="PPJ">Puntos por Juego (PPJ)</option>
-        <option value="RPJ">Rebotes por Juego (RPJ)</option>
-        <option value="APJ">Asistencias por Juego (APJ)</option>
-        <option value="FG%">Porcentaje de Tiros de Campo (FG%)</option>
-        <option value="3PT %">Porcentaje de Triples (3PT%)</option>
-        <option value="TL %">Porcentaje de Tiros Libres (TL%)</option>
-      </select>
-    </div>
-    <div>
-      <label for="ejeY">Eje Y:</label>
-      <select id="ejeY" required>
-        <option value="Altura">Altura</option>
-        <option value="PPJ">Puntos por Juego (PPJ)</option>
-        <option value="RPJ">Rebotes por Juego (RPJ)</option>
-        <option value="APJ">Asistencias por Juego (APJ)</option>
-        <option value="FG%">Porcentaje de Tiros de Campo (FG%)</option>
-        <option value="3PT %">Porcentaje de Triples (3PT%)</option>
-        <option value="TL %">Porcentaje de Tiros Libres (TL%)</option>
-      </select>
-    </div>
-        <div>
-          <label for="estado" style="font-weight: bold;">Estado:</label>
+      <form id="formFiltros" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <div style="flex: 1 1 45%;">
+          <label for="ejeX">Eje X:</label>
+          <select id="ejeX" required>
+            <option value="Altura">Altura</option>
+            <option value="PPJ">Puntos por Juego (PPJ)</option>
+            <option value="RPJ">Rebotes por Juego (RPJ)</option>
+            <option value="APJ">Asistencias por Juego (APJ)</option>
+            <option value="FG%">Porcentaje de Tiros de Campo (FG%)</option>
+            <option value="3PT%">Porcentaje de Triples (3PT%)</option>
+            <option value="TL%">Porcentaje de Tiros Libres (TL%)</option>
+          </select>
+        </div>
+        <div style="flex: 1 1 45%;">
+          <label for="ejeY">Eje Y:</label>
+          <select id="ejeY" required>
+            <option value="Altura">Altura</option>
+            <option value="PPJ">Puntos por Juego (PPJ)</option>
+            <option value="RPJ">Rebotes por Juego (RPJ)</option>
+            <option value="APJ">Asistencias por Juego (APJ)</option>
+            <option value="FG%">Porcentaje de Tiros de Campo (FG%)</option>
+            <option value="3PT%">Porcentaje de Triples (3PT%)</option>
+            <option value="TL%">Porcentaje de Tiros Libres (TL%)</option>
+          </select>
+        </div>
+        <div style="flex: 1 1 45%;">
+          <label for="estado">Estado:</label>
           <select id="estado" required>
             <option value="Todos">Todos</option>
             <option value="Aguascalientes">Aguascalientes</option>
@@ -88,8 +88,8 @@
             <option value="Zacatecas">Zacatecas</option>
           </select>
         </div>
-        <div>
-          <label for="posicion" style="font-weight: bold;">Posición:</label>
+        <div style="flex: 1 1 45%;">
+          <label for="posicion">Posición:</label>
           <select id="posicion" required>
             <option value="Todas">Todas</option>
             <option value="Base">Base</option>
@@ -99,7 +99,7 @@
             <option value="Pívot">Pívot</option>
           </select>
         </div>
-        <button type="submit" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+        <button type="submit" style="flex: 1 1 100%; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
           Generar Gráfica
         </button>
       </form>
@@ -118,3 +118,4 @@
   <script src="graficas.js"></script> <!-- Archivo JS específico -->
 </body>
 </html>
+
