@@ -471,6 +471,19 @@ a:hover {
   width: 200px;
 }
 
+#estrellas .estrella {
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+#estrellas .estrella.seleccionada,
+#estrellas .estrella:hover {
+  color: gold;
+}
+
+
+
 
 /* Estilo para el botón de cerrar sesión */
 #cerrar-sesion {

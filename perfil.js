@@ -36,31 +36,117 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const nombre = params.get("nombre");
   const apellido = params.get("apellido");
-  const username = localStorage.getItem("usuarioActual"); // Obtener el nombre de usuario actual
+  const username = localStorage.getItem("usuarioActual"); // Usuario actual
 
   if (!nombre || !apellido || !username) {
-      console.error("Faltan parámetros en la URL o el usuario no ha iniciado sesión.");
-      return;
+    console.error("Faltan parámetros en la URL o el usuario no ha iniciado sesión.");
+    return;
   }
 
-  // Generar una clave única para cada jugador y usuario
   const notaKey = `${username}_${nombre}_${apellido}`;
+  const calificacionKey = `${notaKey}_calificacion`;
 
-  // Cargar la nota al cargar la página
+  // Cargar nota y calificación
   cargarNota(notaKey);
+  cargarCalificacion(calificacionKey);
 
-  // Añadir eventos a los botones
+  // Botones para guardar/eliminar notas
   const botonGuardar = document.getElementById("guardar-nota");
   const botonEliminar = document.getElementById("eliminar-nota");
 
-  if (botonGuardar) {
-      botonGuardar.addEventListener("click", () => guardarNota(notaKey));
+  botonGuardar?.addEventListener("click", () => guardarNota(notaKey));
+  botonEliminar?.addEventListener("click", () => eliminarNota(notaKey));
+
+  // Estrellas de calificación
+  const estrellas = document.querySelectorAll("#estrellas .estrella");
+  let calificacionSeleccionada = obtenerCalificacion(calificacionKey);
+
+  actualizarEstrellas(estrellas, calificacionSeleccionada);
+
+  estrellas.forEach(estrella => {
+    estrella.addEventListener("mouseover", () => {
+      const valor = estrella.getAttribute("data-value");
+      resaltarEstrellas(estrellas, valor);
+    });
+
+    estrella.addEventListener("mouseleave", () => {
+      resaltarEstrellas(estrellas, calificacionSeleccionada);
+    });
+
+    estrella.addEventListener("click", () => {
+      const valor = estrella.getAttribute("data-value");
+      calificacionSeleccionada = valor;
+      guardarCalificacion(calificacionKey, valor);
+      actualizarEstrellas(estrellas, valor);
+    });
+  });
+});
+
+function cargarNota(notaKey) {
+  const textarea = document.getElementById("nota-texto");
+  const notaGuardada = localStorage.getItem(notaKey) || "";
+  textarea.value = notaGuardada;
+}
+
+function guardarNota(notaKey) {
+  const textarea = document.getElementById("nota-texto");
+  const notaTexto = textarea.value.trim();
+
+  if (notaTexto === "") {
+    alert("La nota está vacía. Escribe algo para guardar.");
+    return;
   }
 
-  if (botonEliminar) {
-      botonEliminar.addEventListener("click", () => eliminarNota(notaKey));
-  }
-});
+  localStorage.setItem(notaKey, notaTexto);
+  mostrarMensaje("¡Nota guardada exitosamente!", "success");
+}
+
+function eliminarNota(notaKey) {
+  localStorage.removeItem(notaKey);
+  document.getElementById("nota-texto").value = "";
+  mostrarMensaje("Nota eliminada.", "error");
+}
+
+function cargarCalificacion(calificacionKey) {
+  const estrellas = document.querySelectorAll("#estrellas .estrella");
+  const calificacionGuardada = obtenerCalificacion(calificacionKey);
+  actualizarEstrellas(estrellas, calificacionGuardada);
+}
+
+function guardarCalificacion(calificacionKey, calificacion) {
+  localStorage.setItem(calificacionKey, calificacion);
+  alert(`¡Calificación de ${calificacion} estrellas guardada!`);
+}
+
+function obtenerCalificacion(calificacionKey) {
+  return parseInt(localStorage.getItem(calificacionKey)) || 0;
+}
+
+function actualizarEstrellas(estrellas, calificacion) {
+  estrellas.forEach(estrella => {
+    const valor = estrella.getAttribute("data-value");
+    estrella.style.color = valor <= calificacion ? "gold" : "#ccc";
+  });
+}
+
+function resaltarEstrellas(estrellas, valor) {
+  estrellas.forEach(estrella => {
+    const valorEstrella = estrella.getAttribute("data-value");
+    estrella.style.color = valorEstrella <= valor ? "gold" : "#ccc";
+  });
+}
+
+function mostrarMensaje(mensaje, tipo) {
+  const mensajeElemento = document.getElementById("nota-guardada");
+  mensajeElemento.textContent = mensaje;
+  mensajeElemento.style.color = tipo === "success" ? "green" : "red";
+  mensajeElemento.style.display = "block";
+
+  setTimeout(() => {
+    mensajeElemento.style.display = "none";
+  }, 2000);
+}
+
 
 // Función para cargar la nota desde localStorage
 function cargarNota(notaKey) {
@@ -114,6 +200,45 @@ function mostrarMensaje(mensaje, tipo) {
       mensajeElemento.style.display = "none";
   }, 2000); // Ocultar mensaje después de 2 segundos
 }
+
+function guardarCalificacion(notaKey, calificacion) {
+  const username = localStorage.getItem("usuarioActual");
+  const calificacionesKey = `calificaciones_${username}`;
+  let calificaciones = JSON.parse(localStorage.getItem(calificacionesKey)) || {};
+
+  // Usar notaKey como clave única para el jugador
+  calificaciones[notaKey] = parseInt(calificacion);
+
+  // Guardar en localStorage
+  localStorage.setItem(calificacionesKey, JSON.stringify(calificaciones));
+  alert(`¡Calificación de ${calificacion} estrellas guardada!`);
+}
+
+function obtenerCalificacion(notaKey) {
+  const username = localStorage.getItem("usuarioActual");
+  const calificacionesKey = `calificaciones_${username}`;
+  const calificaciones = JSON.parse(localStorage.getItem(calificacionesKey)) || {};
+
+  return calificaciones[notaKey] || 0; // Retorna 0 si no hay calificación
+}
+
+
+function cargarCalificacion(calificacionKey) {
+  const estrellas = document.querySelectorAll("#estrellas .estrella");
+  const calificacionGuardada = localStorage.getItem(calificacionKey) || 0;
+
+  actualizarEstrellas(estrellas, calificacionGuardada);
+}
+
+function actualizarEstrellas(estrellas, calificacion) {
+  estrellas.forEach(estrella => {
+    const valor = estrella.getAttribute("data-value");
+    estrella.classList.toggle("seleccionada", valor <= calificacion);
+  });
+}
+
+
+
 
 
 
@@ -196,11 +321,12 @@ function cargarPerfilJugador() {
       fotoElemento.src = "imagenes/default.jpg"; // Imagen predeterminada si no hay foto
     }
 
-
-
-    
-
   }
+  
+  
+  
+  
+  
   
   // Función para cargar información de contacto
   function cargarContacto(jugador) {

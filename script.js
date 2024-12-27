@@ -209,6 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 const equipoActual = localStorage.getItem("usuarioActual");
 const claveProceso = `proceso_${equipoActual}`;
@@ -248,6 +250,21 @@ function ordenarPorRating(jugadores) {
       return ratingB - ratingA;
   });
 }
+
+function obtenerCalificacionUsuario(nombre, apellido) {
+  const username = localStorage.getItem("usuarioActual");
+  const calificacionKey = `${username}_${nombre}_${apellido}_calificacion`;
+
+  const calificacionGuardada = parseInt(localStorage.getItem(calificacionKey)) || 0;
+
+  // Si no hay calificación guardada, retorna "Sin calificar"
+  return calificacionGuardada > 0
+    ? `Calificación: ${calificacionGuardada} estrellas`
+    : "Calificación: Sin calificar";
+}
+
+
+
 
 function mostrarRanking(jugadores) {
   const rankingContainer = document.getElementById("ranking-list");
@@ -368,6 +385,7 @@ function mostrarResultados(lista) {
   const equipoActual = localStorage.getItem("usuarioActual");
   const claveFavoritos = `favoritos_${equipoActual}`;
   const favoritos = JSON.parse(localStorage.getItem(claveFavoritos)) || [];
+  
 
   listaPaginada.forEach(jugador => {
     const li = document.createElement("li");
