@@ -171,10 +171,7 @@ function cargarPerfilJugador() {
     const estrellas = calcularEstrellas(parseFloat(jugador["Rating"] || 0));
     const ratingTexto = jugador["Rating"] ? `${jugador["Rating"]}` : "N/A";
 
-    ratingDiv.innerHTML = `
-      <span style="font-size: 20px; color: #FFD700;">${estrellas}</span>
-      <span style="font-size: 16px; color: #333;"> (${ratingTexto})</span>
-    `;
+    
   
     // Cargar los datos de contacto
     cargarContacto(jugador);

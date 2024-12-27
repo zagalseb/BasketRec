@@ -402,7 +402,6 @@ function mostrarResultados(lista) {
       Posición Principal: ${jugador["Posición principal"] || "Ninguna"}<br>
       Posición Secundaria: ${jugador["Posición Secundaria"] || "Ninguna"}<br>
       Clase: ${jugador["Clase (Año de graduación)"] || "N/A"}<br>
-      Rating: ${jugador["Rating"] || "N/A"} (${calcularEstrellas(jugador["Rating"])})
     `;
     // Insertar el enlace del nombre al principio
     info.querySelector("strong").appendChild(nombreLink);

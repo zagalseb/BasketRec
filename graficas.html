@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráficas de Reclutamiento</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Menú de navegación -->
+  <header>
+    <h1>Base de datos Reclutamiento</h1>
+    <button id="cerrar-sesion">Cerrar Sesión</button>
+    <nav style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; gap: 20px;">
+        <a href="index.html" style="color: white; text-decoration: none;">Inicio</a>
+        <a href="graficas.html" style="color: white; text-decoration: none;">Gráficas</a>
+      </div>
+    </nav>
+  </header>
+
+  <main style="padding: 20px;">
+    <h1 style="text-align: center; color: #004992;">Gráficas Interactivas</h1>
+
+    <!-- Filtros -->
+    <section style="margin-bottom: 20px;">
+  <form id="formFiltros">
+    <div>
+      <label for="ejeX">Eje X:</label>
+      <select id="ejeX" required>
+        <option value="Altura">Altura</option>
+        <option value="PPJ">Puntos por Juego (PPJ)</option>
+        <option value="RPJ">Rebotes por Juego (RPJ)</option>
+        <option value="APJ">Asistencias por Juego (APJ)</option>
+        <option value="FG%">Porcentaje de Tiros de Campo (FG%)</option>
+        <option value="3PT %">Porcentaje de Triples (3PT%)</option>
+        <option value="TL %">Porcentaje de Tiros Libres (TL%)</option>
+      </select>
+    </div>
+    <div>
+      <label for="ejeY">Eje Y:</label>
+      <select id="ejeY" required>
+        <option value="Altura">Altura</option>
+        <option value="PPJ">Puntos por Juego (PPJ)</option>
+        <option value="RPJ">Rebotes por Juego (RPJ)</option>
+        <option value="APJ">Asistencias por Juego (APJ)</option>
+        <option value="FG%">Porcentaje de Tiros de Campo (FG%)</option>
+        <option value="3PT %">Porcentaje de Triples (3PT%)</option>
+        <option value="TL %">Porcentaje de Tiros Libres (TL%)</option>
+      </select>
+    </div>
+        <div>
+          <label for="estado" style="font-weight: bold;">Estado:</label>
+          <select id="estado" required>
+            <option value="Todos">Todos</option>
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Ciudad de México">Ciudad de México</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Estado de México">Estado de México</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="Michoacán">Michoacán</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo León">Nuevo León</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Querétaro">Querétaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosí">San Luis Potosí</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucatán">Yucatán</option>
+            <option value="Zacatecas">Zacatecas</option>
+          </select>
+        </div>
+        <div>
+          <label for="posicion" style="font-weight: bold;">Posición:</label>
+          <select id="posicion" required>
+            <option value="Todas">Todas</option>
+            <option value="Base">Base</option>
+            <option value="Escolta">Escolta</option>
+            <option value="Alero">Alero</option>
+            <option value="Ala-Pívot">Ala-Pívot</option>
+            <option value="Pívot">Pívot</option>
+          </select>
+        </div>
+        <button type="submit" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">
+          Generar Gráfica
+        </button>
+      </form>
+    </section>
+
+    <!-- Contenedor para la gráfica -->
+    <div style="width: 800px; margin: auto;">
+      <canvas id="grafica"></canvas>
+    </div>
+  </main>
+
+  <footer style="background-color: #004992; color: white; text-align: center; padding: 10px; margin-top: 20px;">
+    &copy; 2024 Reclutamiento Deportivo. Todos los derechos reservados.
+  </footer>
+
+  <script src="graficas.js"></script> <!-- Archivo JS específico -->
+</body>
+</html>
