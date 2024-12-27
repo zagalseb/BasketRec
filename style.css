@@ -571,6 +571,166 @@ a:hover {
 
 
 
+/* Contenedor de la lista de jugadores */
+/* Lista de jugadores: Maximiza espacio */
+#lista-jugadores {
+  display: grid; /* Asegura la cuadrícula por defecto */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  justify-items: center;
+  transition: opacity 0.3s ease; /* Transición suave */
+}
+
+#lista-jugadores.hidden {
+  opacity: 0;
+  pointer-events: none; /* Evitar interacciones mientras está oculto */
+}
+
+/* Botón de ocultar/mostrar */
+#toggleListaJugadores {
+  background-color: #004992; /* Fondo azul oscuro */
+  color: #ffffff; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: block; /* Asegura que el botón sea un bloque */
+  margin: 0 auto 20px auto; /* Centra horizontalmente */
+  text-align: center;
+}
+
+/* Efecto hover y clic */
+#toggleListaJugadores:hover {
+  background-color: #003366; /* Azul más oscuro */
+  transform: scale(1.05); /* Aumenta ligeramente */
+}
+
+#toggleListaJugadores:active {
+  background-color: #002244; /* Azul más oscuro */
+  transform: scale(0.95); /* Reduce ligeramente */
+}
+
+/* Estilo para los textos */
+h3, h2 {
+  color: #004992; /* Cambiar el texto a azul */
+  font-weight: bold;
+  text-align: center; /* Centrar el texto */
+  margin-bottom: 20px;
+}
+
+
+/* Cada jugador */
+.jugador-item {
+  display: flex;
+  flex-direction: column; /* Nombre y checkbox en una columna */
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px; /* Fuente más pequeña pero legible */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center; /* Centrar el texto */
+}
+
+.jugador-item:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.03); /* Efecto de agrandamiento al pasar el cursor */
+  cursor: pointer;
+}
+
+/* Checkbox */
+.jugador-item input[type="checkbox"] {
+  margin-bottom: 5px;
+}
+
+/* Nombres */
+.jugador-item label {
+  font-size: 14px; /* Tamaño de fuente más compacto */
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  white-space: normal; /* Permitir que los nombres largos se dividan en varias líneas */
+  word-wrap: break-word; /* Dividir palabras si es necesario */
+}
+
+/* Imagen del jugador */
+.jugador-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid #004992;
+}
+
+
+/* Tabla comparativa */
+/* Estilo general de la tabla */
+.tabla-comparacion {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Bordes y separación */
+.tabla-comparacion th, .tabla-comparacion td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+/* Encabezados de la tabla */
+.tabla-comparacion th {
+  background-color: #004992;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+/* Alternar colores de las filas */
+.tabla-comparacion tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabla-comparacion tr:hover {
+  background-color: #d1e7f5;
+}
+
+/* Alineación y estilo de imágenes */
+.tabla-comparacion img {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid #004992;
+}
+
+/* Texto de las celdas */
+.tabla-comparacion td {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Centrar la tabla */
+#tabla-comparacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+
 
 /* Mejoras para móviles */
 @media (max-width: 768px) {
